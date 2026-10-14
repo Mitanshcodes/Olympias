@@ -1,11 +1,9 @@
 import TaskItem from './TaskItem.jsx'
 
-export default function TaskList() {
+export default function TaskList({tasks}) {
     return (
         <div> 
-            <TaskItem title = "CS P2" checkbox = {false} />
-            <TaskItem title = "Math240" checkbox = {true}/>
-            <TaskItem title = "Olympias" checkbox = {false} />
+            {tasks.map( task => (<TaskItem key = {task.id} title = {task.title} checkbox = {task.done} />))}
         </div>
     )
 }
