@@ -14,14 +14,28 @@ function App() {
     {id : 3, title: 'Olympias', done: false}
   ])
 
+  function toggleDone(id) {
+  setTasks(prev => prev.map(p => (p.id === id ? { ...p, done: !p.done} : p)))
+  }
+  
+  function onDelete(id) {
+    setTasks(prev => prev.filter(p => (p.id !== id)))
+  }
+
+
+
   return (
     <div>
     <h1>  Olympias </h1>
       {tasks.length ===0 ? <p> No tasks </p> :
-      <TaskList tasks = {tasks}/>
+      <TaskList tasks = {tasks} toggleDone={toggleDone} onDelete = {onDelete}/>
       }
     </div>
   )
 }
+
+
+
+
 
 export default App
